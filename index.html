@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shotsudio</title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .header {
+        position: relative;
+        width: 1920px;
+        height: 400px;
+        /* background: url("https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") */
+        /* background: url(img/whitebg.jpg) */
+        background: url("https://images.unsplash.com/photo-1544639044-8359f85e455e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.486);
+        mix-blend-mode: multiply;
+        backdrop-filter: blur(3px); /* Efek blur pada background */
+      }
+
+      .header-content {
+        position: relative;
+        max-width: 1000px;
+      }
+
+      .profile {
+        align-items: center;
+        align-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+
+      margin-top: 0px;
+      }
+
+      .profile:hover{
+        scale: 1.05;
+      }
+      .header h1 {
+        font-size: 66px;
+        font-weight: 500;
+        margin-bottom: -10px;
+        font-family: 'Sue Ellen Francisco', cursive;
+
+      }
+
+      .header p {
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 40px;
+        
+      }
+
+      .header button {
+        background: #46c925;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .header button:hover {
+        background: #259409;
+        scale: 1.05;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 1920px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 200px;
+        background: transparent;
+        transition: background 0.3s;
+        z-index: 1000;
+        box-sizing: border-box;
+      }
+
+      .navbar-left {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Menyesuaikan jarak antara gambar profil dan logo */
+      }
+
+      .navbar.scrolled {
+        /* background: rgba(159, 247, 101, 0.438); */
+        /* background: #a2db6c; */
+        background: #262626;
+      }
+
+      .navbar .logo {
+        font-size: 35px;
+        letter-spacing: 1px;
+        /* font-weight: bold; */
+        color: white;
+        font-family: 'Poetsen One', sans-serif;
+      }
+
+      .logo:hover{
+        color:#46c925;
+        scale: 1.05;
+      }
+      .navbar .menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .navbar .menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        transition: color 0.3s;
+      }
+
+      .navbar .menu a:hover {
+        color: #46c925;
+        scale: 1.05;
+      }
+
+      .navbar-bottom-line {
+        width: 100%;
+        height: 1px;
+        background: white;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      .navbar.scrolled .navbar-bottom-line {
+        opacity: 0;
+        /* transition: ease-in-out; */
+      }
+
+      .featured-items,
+      .best-features,
+      .recent-items,
+      .testimonial,
+      .get-in-touch {
+        width: 1920px;
+        height: 1050px;
+        background-color: #f6f7f9;
+        margin: 0px 0;
+      }
+
+      .featured-items {
+        display: flex;
+  flex-direction: column;
+  align-items: center;
+        width: 100%;
+        max-width: 1920px;
+        margin: 0px auto;
+        text-align: center;
+        padding: 50px 20px;
+        padding-bottom: 100px;
+        padding-top: 100px;
+      }
+
+      .featured-items h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -10px;
+      }
+
+      .items-container {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Memastikan semua item sejajar */
+        flex-wrap: wrap;
+        max-width: 1300px; /* Batasi agar item tetap di tengah */
+        margin: 0 auto; /* Pastikan items-container berada di tengah */
+        gap: 30px;
+        row-gap: 60px;
+      }
+
+      .item-card {
+        background: #fff;
+        /* border-radius: 10px; */
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: left;
+        /* min-height: 500px; */
+      }
+
+      .item-card:hover {
+        scale: 1.05;
+      }
+
+      .item-image {
+        width: 80%;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        margin: 0 auto;
+        margin-top: 30px;
+        margin-left: 30px;
+        height: 250px;
+        object-fit: cover;
+        /* opacity: 50%; */
+      }
+
+      .item-info {
+        margin-top: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        
+        /* padding: 15px; */
+      }
+
+      .item-info h3 {
+        font-size: 16px;
+        font-weight: 500;
+        /* margin-bottom: 50px; */
+      }
+
+      .item-info .price {
+        font-size: 18px;
+      }
+
+      .item-info .author-p {
+        font-size: 12px;
+        color: #696969;
+      }
+
+      .title-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: -20px;
+        margin-bottom: -20px;
+        padding: 8px;
+      }
+
+      .price {
+        color: #46c925;
+        /* font-weight: bold; */
+      }
+
+      .uploader-info {
+        
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        /* margin-top: 10px; */
+        padding-bottom: 20px;
+      }
+
+      .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .buy-button {
+        background-color: #46c925;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100px;
+        margin-left: 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        margin-top: 0px;
+      }
+      .buy-button:hover {
+        background-color: #259409;
+        scale: 1.05;
+      }
+
+      #merchandise {
+        background: #fff;
+      }
+    </style>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="navbar" id="navbar">
+      <div class="navbar-left">
+        <img class="profile" src="img/profile.jpg" alt="Profile" />
+        <div class="logo">Shotsudio</div>
+      </div>
+      <div class="menu">
+        <a href="#header">Home</a>
+        <a href="#footer-sec">About</a>
+        <a href="#digital-product">Shop</a>
+        <a href="#getintouch">Contact</a>
+      </div>
+      <div class="navbar-bottom-line"></div>
+    </div>
+
+    <div class="header" id="header">
+      <div class="header-content">
+        <h1>Your partner in creative leaps! Shotsudio</h1>
+        <p>
+          Live2D Course, Vtuber Rigging, Streaming Assets, Animation,
+          Merchandise!
+        </p>
+        <a href="#digital-product">
+          <button>Find Items</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="featured-items" id="digital-product">
+      <h1>Digital Product</h1>
+      <p>Try something new and earn with me!</p>
+
+      <div class="items-container">
+        <div class="item-card">
+          <img
+            src="img/BodyCut2.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3>Live2D Body Partitioning
+                <br>(.cmo3)</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <a href="http://lynk.id/shossuki/J96nWnK">
+              <button class="buy-button">Buy Now</button>
+            </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/ShossukiPre.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3>Live2D Shossuki Model
+                <br>(.moc3)</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <a href="http://lynk.id/shossuki/OaA6AXL">
+              <button class="buy-button">Buy Now</button>
+            </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/Rigging4.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3>Premium Live2D Rigging <br>Services </h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <a href="https://vgen.co/shossuki/service/premium-live2d-vtuber-rigging-commission/33ad1185-0812-4185-babc-f5c0e926caaf">
+              <button class="buy-button">Buy Now</button>
+            </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/Ghibli4.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3>Ghibli Style <br>Animated Illustration</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <a href="https://vgen.co/shossuki/service/ghibli-style-illustration-from-your-request/3d3416b0-584e-4ffb-a9b9-f39c92f80573">
+              <button class="buy-button">Buy Now</button>
+            </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="featured-items" id="merchandise">
+      <h1>Merchandise</h1>
+      <p>Designed with Passion, Worn with Pride!</p>
+
+      <div class="items-container">
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img
+            src="img/coming a.jpg"
+            alt="Item Image"
+            class="item-image"
+          />
+          <div class="item-info">
+            <div class="title-price">
+              <h3> Coming Soon</h3>
+              <p class="price"> </p>
+            </div>
+            <div class="uploader-info">
+              <img
+                src="img/profile.jpg"
+                alt="Uploader Profile"
+                class="profile-pic"
+              />
+              <p class="author-p">by Shossuki</p>
+              <button class="buy-button">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <style>
+
+
+#getintouch {
+  background-color: #0000009c;
+  /* margin-bottom:100px;
+  margin-top: 100px; */
+  /* padding-top: 100px;
+  padding-bottom: 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Pusatkan secara vertikal */
+  align-items: center; /* Pusatkan secara horizontal */
+  height: 120vh; /* Gunakan 100vh agar benar-benar di tengah layar */
+  padding: 20px;
+  background: rgba(139, 139, 139, 0.315);
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+  background-image: repeating-linear-gradient(
+      to right,
+      transparent 0 100px,
+      #26262622 100px 101px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 100px,
+      #26262622 100px 101px
+    );
+}
+
+
+#getintouch .label{
+text-align: left;
+align-items: left;
+justify-content: left;
+font-family: poppins;
+}
+
+#getintouch h2{
+margin-top: 50px;
+}
+
+#getintouch p{
+margin-bottom: 50px;
+}
+
+/* Form Container */
+.form-container {
+  width: 600px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+/* Label Input (Supaya Rata Kiri) */
+.form-container label {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #262626;
+  align-self: flex-start; /* Buat label rata kiri */
+  margin-top: 15px;
+  margin-right: 480px;
+  margin-bottom: 5px; /* Biar ada jarak kecil ke input */
+}
+
+/* Form Input & Textarea */
+.form-container input,
+.form-container textarea {
+  margin-top: 5px;
+  width: 100%;
+  padding: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  outline: solid;
+  outline-color: #46c925;
+  transition: 0.3s ease;
+}
+
+.form-container input {
+  height: 50px;
+}
+
+.form-container textarea {
+  height: 150px;
+  resize: none;
+}
+
+/* Spasi antar input */
+.form-container input,
+.form-container textarea {
+  margin-bottom: 20px;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(255, 191, 52, 0.6);
+}
+
+/* Tombol Kirim */
+.form-container button {
+  font-family: "ICA Rubrik Black", sans-serif;
+  font-size: 1.2rem;
+  background: #46c925;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.form-container button:hover {
+  transform: scale(1.05);
+  color: #ffffff;
+  background: #262626;
+  /* box-shadow: 0px 8px 20px rgba(255, 184, 77, 0.8); */
+}
+
+/* Pesan Status */
+#statusMessage {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-top: 15px;
+  color: #fff;
+}
+
+.navbtn {
+  
+  background-color: #262626;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  width: 200px;
+  height: 60px;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  margin: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.navbtn:hover{
+  background-color: #46c925;
+  color: white;
+  scale: 1.05;
+}
+
+
+.more-navbtn a {
+  /* margin-top: 50px; */
+  display: inline-block; /* Pastikan tidak ada garis pemisah */
+  text-decoration: none; /* Hilangkan underline */
+}
+
+
+    </style>
+<div class="featured-items" id="getintouch">
+  <h1>+ Get In Touch +</h1>
+  <p>Still confused about what you want? Feel free to contact me</p>
+  
+  <div class="form-container">
+    <form id="contactForm">
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Please Insert Your Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Please Insert Your Mail" required>
+
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+
+
+      <p id="statusMessage"></p>
+    </form>
+  </div>
+
+  <div class="more-navbtn"> 
+    <a href="https://vgen.co/shossuki" target="_blank">
+      <button class="navbtn">VGen</button>
+    </a>
+    <a href="https://lynk.id/shossuki" target="_blank">
+      <button class="navbtn">Lynk</button>
+    </a>
+    <a href="https://www.instagram.com/shossuki/" target="_blank">
+      <button class="navbtn">Instagram</button>
+    </a>
+    </div>
+  
+    <div class="more-navbtn"> 
+      <a href="https://x.com/shossuki" target="_blank">
+        <button class="navbtn">X</button>
+      </a>
+      <a href="https://www.fiverr.com/s/4daRLm" target="_blank">
+        <button class="navbtn">Fiverr</button>
+      </a>
+      <a href="https://www.tiktok.com/@shossuki.ch" target="_blank">
+        <button class="navbtn">Tiktok</button>
+      </a>
+      </div>
+</div>
+
+
+
+    <style>
+      .testimonial-section {
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+      }
+
+      .video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .video-bg iframe {
+        position: absolute;
+        width: 177.78vh; /* 16:9 aspect ratio */
+        height: 100vh;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+      }
+
+      /* Overlay */
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 2, 22, 0.281); /* Hitam 60% */
+        z-index: 0;
+      }
+
+      /* Header Testimonial */
+      .testimonial-header {
+        position: absolute;
+        top: 32%;
+        text-align: center;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Mengatur jarak antar elemen */
+      }
+
+      .testimonial-header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: -5px;
+      }
+
+      .testimonial-header p {
+        font-size: 1.2rem;
+        margin-top: 0px;
+      }
+
+      .testimonial-content {
+        margin-top: 0px;
+        position: relative;
+        z-index: 2; /* Lebih tinggi dari overlay */
+        background: rgba(245, 245, 245, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        backdrop-filter: blur(5px); /* Efek blur */
+      }
+
+      .testimonial-carousel {
+        margin-top: 0px;
+      }
+
+      .testimonial-item {
+        display: none;
+      }
+
+      .testimonial-item.active {
+        display: block;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <section class="testimonial-section" id="testi">
+      <div class="video-bg">
+        <iframe
+          src="https://www.youtube.com/embed/zvcTo3NV6fY?autoplay=1&mute=1&loop=1&playlist=zvcTo3NV6fY&controls=0&showinfo=0&modestbranding=1&rel=0"
+          frameborder="0"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+
+      <div class="video-overlay"></div>
+      <!-- Overlay hitam -->
+
+      <!-- Header di atas testimoni -->
+      <div class="testimonial-header">
+        <!-- <h1>Testimonial</h1>
+        <p>Hear what our clients say!</p> -->
+      </div>
+
+      <div class="testimonial-content">
+        <div class="testimonial-carousel">
+          <div class="testimonial-item active">
+            "Did exactly what I asked to the best of their abilities. I couldn't
+            ask for more, he was very quick to answer messages and the attention
+            to detail was very good. I would recommend this seller to everyone
+            that I know. A++" - Achan
+          </div>
+          <div class="testimonial-item">
+            "Communication was great and got very prompt response! They went
+            above and beyond in terms of quality of service. Highly recommended
+            :-)" - Rorounikenra
+          </div>
+          <div class="testimonial-item">
+            "They are great at communicating with you and are willing to answer
+            any questions you have. I added a couple of last-minute changes I
+            would have liked and they added them in and made it look great." -
+            Summonerxiv
+          </div>
+          <div class="testimonial-item">"such a wonderful and amazing work from amazing person thank you very much I like the work and you made something the way I wanted thanks again and keep it up man You Are The Best" - Adnan_w</div>
+          <div class="testimonial-item">I have never worked with a partner this driven and understanding. I highly recommend working with Comator. This studio takes is time and even helped finding the right artist for my character design. Feedback gets taken into account and the order doesn't finish unless both parties are super satisfied. I'm already creating a briefing for a new order soon! - Hamza_ug</div>
+          <div class="testimonial-item">Very communicative and responded to my edits! I’m very happy with the rig and they were so nice! I would definitely recommend and I will be returning :) - Aerotempest</div>
+          <div class="testimonial-item">"The seller was very communicative about the project, and the work was astounding. I would highly recommend this seller to anyone looking to get a great Vtuber model!" - Ragnar_konungr</div>
+          <div class="testimonial-item">"Absolutely astounding partner to work with. I was nervous about this as my idea had a lot of things not very common for this type of gig. Completely understanding, willing to help with questions and feedback on ideas, and the final product was AMAZING. I love the result, and loved the process getting to the result. I would absolutely work with them again, and will do so in the future." - Trayal</div>
+          <div class="testimonial-item">"Amazing communication, quick and excellent work. Well done overall! Thank you so much!" - Alexwrightflo</div>
+          <div class="testimonial-item">"The Comator Team did amazing work with my Digi, I trusted them with an important stage of my life as I made dramatic changes to my streaming setup and layout. I was a little nervous, but all those nerves instantly disappeared on first contact. The Comator Team are all lovely people, who put their heart and soul into the work that they do." - Lovenji</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".testimonial-item");
+        let index = 0;
+
+        function showNextTestimonial() {
+          items[index].classList.remove("active");
+          index = (index + 1) % items.length;
+          items[index].classList.add("active");
+        }
+
+        setInterval(showNextTestimonial, 3000);
+      });
+    </script>
+
+    <!-- <div class="best-features"></div>
+    <div class="recent-items"></div>
+    <div class="get-in-touch"></div> -->
+
+    <!-- <script src="script.js"></script> -->
+
+
+    <style>
+      
+#footer-sec{
+  background-color: #262626;
+  height: 300px;
+}
+
+.footer{
+  background-color: #262626;
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: left;
+  
+}
+
+.footer-container {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column, .footer-profile {
+  font-family: poppins;
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-profile p{
+  color: #ffffff;
+}
+.footer-column h3, .footer-profile h3 {
+  /* margin-bottom: 10px; */
+  color: #f39c12;
+}
+
+.footer-column h3:hover, .footer-profile h3:hover {
+  /* margin-bottom: 10px; */
+  color: #ffffff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 5px 0;
+}
+
+.footer-column ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #f39c12;
+  scale: 1.2;
+  
+}
+
+.footer-profile {
+  color: #ffffff;
+  text-align: center;
+  
+}
+
+.footer-profile ul li a{
+  text-decoration: none;
+}
+
+.footer-profile p:hover{
+  color: #f39c12;
+}
+
+.footer-profile h3{
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 30px;
+  margin-top: -10px;
+  margin-bottom: -15px;
+}
+.footer-profile img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.footer-profile img:hover{
+  scale: 1.05;
+}
+
+.social-icons img {
+  width: 30px;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+    </style>
+    <div class="section" id="footer-sec">
+      <div class="footer-container">
+
+          <div class="footer-column">
+              <h3>Services</h3>
+              <ul>
+                  <li><a href="https://vgen.co/shossuki">Live2D Model</a></li>
+                  <li><a href="https://vgen.co/shossuki">Rigging Service</a></li>
+                  <li><a href="https://vgen.co/shossuki">Illustration</a></li>
+                  <li><a href="https://vgen.co/shossuki">Animation</a></li>
+                  <li><a href="https://vgen.co/shossuki">Custom Request</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-column">
+              <h3>About</h3>
+              <ul>
+                  <li><a href="https://vgen.co/shossuki">Shossuki</a></li>
+                  <li><a href="https://vgen.co/creator/portfolio">Portfolio</a></li>
+                  <li><a href="https://www.fiverr.com/s/4daRLm">Testimonials</a></li>
+                  <li><a href="https://shossuki.vercel.app/#terms-of-services">Terms of Service</a></li>
+                  <li><a href="https://shossuki.vercel.app/#terms-of-services">Project Workflow</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-column">
+              <h3>Support</h3>
+              <ul>
+                  <li><a href="https://shossuki.vercel.app/#faq">FAQ</a></li>
+                  <li><a href="https://shossuki.vercel.app/#getintouch">Contact Me</a></li>
+                  <li><a href="https://shossuki.vercel.app/#normal-packages">Pricing</a></li>
+                  <li><a href="https://shossuki.vercel.app/#getintouch">Commission Status</a></li>
+                  <li><a href="https://shossuki.vercel.app/#getintouch">Live Chat</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-profile">
+            <img src="img/Icon.jpg" alt="Shossuki Profile">
+            <h3>Shotsudio</h3>
+            <a href="getintouch"></a>
+              <p>Your partner in creative leaps!</p>
+          </div>
+      </div>
+
+
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("LWZOEpup7nTKJSOuk");  
+    })();
+  </script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+  
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("message").value;
+  
+   
+      emailjs.send("service_wnyn5qc", "template_hp3cqlz", {
+        from_name: name,
+        from_email: email,
+        message: message
+      }).then(
+        function(response) {
+          document.getElementById("statusMessage").innerText = "Message already sent!";
+          document.getElementById("statusMessage").style.color = "green";
+          document.getElementById("contactForm").reset();
+        },
+        function(error) {
+          document.getElementById("statusMessage").innerText = "Message didn't send, try again.";
+          document.getElementById("statusMessage").style.color = "red";
+        }
+      );
+    });
+  </script>
+  </body>
+
+  
+</html>
